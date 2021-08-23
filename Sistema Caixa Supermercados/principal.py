@@ -14,7 +14,7 @@ def compra_vazia():
     else:
         return False
 
-# O código é separado, por peso/quantidade e código, ex: 2x7622210194046 = "2", "7622210194046"
+# O código é separado, por peso/quantidade e código, ex: 2x7622210194046 = ["2", "7622210194046"]
 # Aqui é testado também se o código é codigo de fruta ou de produto, sendo de fruta ele direciona pra função registra_flv(), sendo de produto para registra_produto.
 def leitura_codigo():
     codigo = str(input("Código: ")).replace("x", " ").split()
