@@ -193,8 +193,8 @@ def credito(total, pago, pagar, lista_pagamento, total_pago):
         print("[ERRO]: Digite valores numéricos")
         return credito(total, pago, pagar, lista_pagamento, total_pago)
     else:
-        lista_pagamento.append(["CREDITO A VISTA", pago])
         if pago < pagar:
+            lista_pagamento.append(["CREDITO A VISTA", pago])
             pagar -= pago
             pagar = round(pagar, 2)
             return encerra_compra(total, pago, pagar, lista_pagamento, total_pago)
@@ -203,6 +203,7 @@ def credito(total, pago, pagar, lista_pagamento, total_pago):
             pago = 0
             return encerra_compra(total, pago, pagar, lista_pagamento, total_pago)
         else:
+            lista_pagamento.append(["CREDITO A VISTA", pago])
             troco = 0
             total_pago += pago
             imprime_nota(total, troco, lista_pagamento)
@@ -217,16 +218,17 @@ def credito_parcelado(total, pago, pagar, lista_pagamento, total_pago):
         print("[ERRO]: Digite valores numéricos")
         return credito_parcelado(total, pago, pagar, lista_pagamento, total_pago)
     else:
-        lista_pagamento.append(["CREDITO PARCELADO", vezes, pago])
         if pago < pagar:
             pagar -= pago
             pagar = round(pagar, 2)
+            lista_pagamento.append(["CREDITO PARCELADO", vezes, pago])
             return encerra_compra(total, pago, pagar, lista_pagamento, total_pago)
         elif pago > pagar:
             print("[ERRO]: Forma de pagamento não aceita troco")
             pago = 0
             return encerra_compra(total, pago, pagar, lista_pagamento, total_pago)
         else:
+            lista_pagamento.append(["CREDITO PARCELADO", vezes, pago])
             troco = 0
             total_pago += pago
             imprime_nota(total, troco, lista_pagamento)
@@ -240,8 +242,8 @@ def debito(total, pago, pagar, lista_pagamento, total_pago):
         print("[ERRO]: Digite valores numéricos")
         return debito(total, pago, pagar, lista_pagamento, total_pago)
     else:
-        lista_pagamento.append(["DEBITO", pago])
         if pago < pagar:
+            lista_pagamento.append(["DEBITO", pago])
             pagar -= pago
             pagar = round(pagar, 2)
             return encerra_compra(total, pago, pagar, lista_pagamento, total_pago)
@@ -250,6 +252,7 @@ def debito(total, pago, pagar, lista_pagamento, total_pago):
             pago = 0
             return encerra_compra(total, pago, pagar, lista_pagamento, total_pago)
         else:
+            lista_pagamento.append(["DEBITO", pago])
             troco = 0
             total_pago += pago
             imprime_nota(total, troco, lista_pagamento)
