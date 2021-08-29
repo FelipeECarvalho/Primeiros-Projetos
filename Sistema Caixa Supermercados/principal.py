@@ -37,13 +37,22 @@ def leitura_codigo():
         except (KeyError, IndexError):
             print("[ERRO]: Código inválido")
         else:
-            return registra_flv(codigo[0], codigo[1])
+            if len(codigo[1]) > 4:
+                codigo[0] = float(codigo[0])
+                return registra_produto(codigo[1], codigo[0])
+            else:
+                return registra_flv(codigo[0], codigo[1])
 
 
-def registra_produto(codigo):
-    vezes = 1
-    calcula_preco(vezes, codigo)
-    return apresenta_produto(codigo, vezes)
+def registra_produto(codigo, quant=0):
+    if quant == 0:
+        vezes = 1
+        calcula_preco(vezes, codigo)
+        return apresenta_produto(codigo, vezes)
+    else:
+        vezes = int(quant)
+        calcula_preco(vezes, codigo)
+        return apresenta_produto(codigo, vezes)
 
 
 def registra_flv(quant, codigo):
